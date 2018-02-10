@@ -1,0 +1,98 @@
+1. Install JDK 8	java runtime environment	(version 1.8.0--XX 	//check from cmd: java -version)
+	set JAVA_HOME:
+	C:\>set JAVA_HOME="C:\Program Files\Java\jdk1.8.0_161"
+
+
+2. Install tomcat-9
+	Test tomcat: start tomcat and test localhost:8080
+
+3. Download eclipse ee:
+	- make sure the eclipse version is for Java EE	(Web Application)
+	- setting up Server/environment -->choose tomcat
+
+4. Start project:
+	- from eclipse, goto file/new/dynamic web project
+	- create servlet: "Java Resources"/new/servlet
+		+ Note: package name: gui
+			to run: navigate to Java Resources/src/gui/HelloWorld.java
+
+5. Edit project:
+	- import PrintWriter: import java.io.PrintWriter;
+
+6. Create HTML template:
+	- goto Webcontent/new/html file
+
+7. Create JSP file:
+	-goto WebContent/new/JSP file, select html file
+
+8. Create an output html from java
+	<%=
+		"<h2>and now you see Hello World JSP from Java</h2>"
+	%>
+
+9. Web.xml
+	....
+	 <servlet>
+   		 <description></description>
+    		<display-name>Hello</display-name>
+    		<servlet-name>Hello</servlet-name>
+    		<servlet-class>demo.Hello</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    		<servlet-name>Hello</servlet-name>
+    		<url-pattern>/Hello</url-pattern>
+  	</servlet-mapping>
+
+9. Output to html:
+	out.println(String theString);
+	or:
+		<%=
+		"<h2>and now you see Hello World JSP from Java</h2>"
+		%>
+
+10. FileSystemXmlApplicationContext
+
+11. Create a package to contain all the xml file
+	from the domain, create new package with the name ="...".beans
+	move all the xml file into this package.
+
+12. Construct args in xml beans
+	<bean id="person" class="bui.spring.test.springProject1.Person">
+		<constructor-arg value="1000"></constructor-arg>	//set class's field
+		<constructor-arg value="person one"></constructor-arg>	////set class's field
+	</bean>
+
+13. Field Reference from one class to another:
+	<bean id="person" class="bui.spring.test.springProject1.Person">
+		<constructor-arg value="1000" index="0" name="id"></constructor-arg>
+		<constructor-arg value="Person One" index="1" name="name"></constructor-arg>
+		<property name="age" value="38"></property>
+		<property name="address" ref="address"></property>	//note the ref = ""
+	</bean>
+	
+	<bean id="address" class="bui.spring.test.springProject1.Address">
+		<constructor-arg value="129/478 Drummond" index="0"	name="street"></constructor-arg>
+		<constructor-arg value="3053" index="1" name="postcode"></constructor-arg>		
+	</bean>
+
+14. Scope = beans.xml file
+	- Scope="prototype" --> no destroy-method will be run
+	- Scope = "singleton" --> both init-method and destroy-method will run
+15. Init and Destroy method
+	- for <beans> with default-init-method and default-destroy-method
+		<beans ...	default-init-method="init" default-destroy-method="destroy">
+	- for individual bean:
+		<bean ... init-method="onCreate" destroy-method="onDestroy">
+
+16. Factory method: to create new instance of a class
+	public static Person getInstance() {	//the class name here does not matter
+		System.out.println("This is the person created by using factory method");
+		return new Person();	//just return an instance
+	}
+
+16. constructor a List field (in beans.xml)
+	<constructor-arg>
+		<list>
+			//set attribute, name, value here
+		</list>
+	</constructor-arg>
