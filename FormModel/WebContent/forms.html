@@ -1,0 +1,34 @@
+
+<form class="form-group" method ="post" action="submit.jsp">
+	<p class="form-control">
+		<label for="fullname">Full Name: </label>
+		<input type=text id="fullname" value="" name="fullname" placeholder="Enter your fullname"/>
+	</p>
+	<p class="form-control">Gender:
+		<label for="male">Male </label>
+		<input type="radio" name="gender" value="male" id="male" checked="checked"/>
+		<label for="female">Female </label>
+		<input type="radio" name="gender" value="female" id="female"/>
+		<label for="other">Other </label>
+		<input type="radio" name="gender" value="other" id="other"/>
+	</p>
+	<p class="form-control">Language:
+		<label for="english">English</label>
+		<input type="checkbox" name="language[]" value="English" checked="checked" id="english"/>
+		<label for="french">French</label>
+		<input type="checkbox" name="language[]" value="frence" id="french"/>
+		<label for="spanish">Spanish</label>
+		<input type="checkbox" name="language[]" value="spanish" id="spanish"/>
+	</p>
+	<p class="form-control">Country:
+		<select name="country">
+			<option value="Australia">Australia</option>
+			<option value="Vietnam">VietNam</option>
+			<option value="england">England</option>
+		</select>
+	</p>
+	<p>
+		<input type="submit" value="submit form" class="btn btn-primary"/>
+		<input type="reset" class="btn btn-danger" value="Cancel"/>
+	</p>
+</form>
