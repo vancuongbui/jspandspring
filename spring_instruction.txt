@@ -50,19 +50,100 @@
 		"<h2>and now you see Hello World JSP from Java</h2>"
 		%>
 
-10. FileSystemXmlApplicationContext
+9.1 JSP expressions scripting element
+	- Expression: 	<%= expression %>		<%= 10*20 %>
+	- Scriptlet:		<% scriptlets %>		<% out.println("string here") %>
+		note: scriptlet allow mutilple line of statements ending by ";"
+	- Declaration	<%! declaration  %>		<%! public int count=0;  %>
+		<%!
+			String message() {
+				return "Hello function inside JSP file - declaration practices";
+			}
+		%>
+		<%= message() %>
 
-11. Create a package to contain all the xml file
+	
+	- Directive		<%@ directive %>		<%@ page... %>
+		+ Redirect to other page
+			<% response.sendRedirect("https://google.com.au") %>;
+
+	- Comment	<%-- comment  --%>		<%-- my jsp comment --%>
+
+9.2 Get Parameters:
+	arg01 = request.getParameter("get");	//det parameters from the url with get method
+	or get an array: arg01 = request.getParameterValues("array_name")
+	References: https://www.tutorialspoint.com/jsp/jsp_form_processing.htm
+
+9.3 Include files in JSP (Static files - just like copy the content from the file to the main page):
+	<div class="row">
+		<%@ include file="includeMain.html" %>
+		<%@ include file="includeAside.html" %>
+	</div>
+9.4 Import package in JSP
+	<body>
+		<%@ page import="java.util.Date" %>
+		<%= new Date() %>
+	</body>
+9.5 Import Class created in JSP
+	<div>
+		<%@ page import="importedClass.ImportCls" %>
+		<%= new ImportCls().testImport() %>
+	</div>
+
+9.6 Forward and Redirect
+	- Forward page: <jsp:forward page="forward.jsp"></jsp:forward>
+		or: <%
+			request.getRequestDispatcher("forward_2.jsp").forward(request, response);
+		     %>
+
+	- Redirect page: <% response.sendRedirect("redirect.jsp"); %>
+
+10. Deploying Java EE project in local server (Tomcat server)
+	- Export project into war file,
+	- copy war file into tomcat directory	c:\Program Files\Apache Tomcat Foundation\Tomcat9.0\webapp
+	- rung "monitor tomcat" as administrator
+	- start the server
+	- check server at localhost:8080
+	- then, check the domain: http://localhost:8080/Deploymen/loginpage, for example.
+	Note: if you want to deploy another war file, delete the old war file as well as it's deployment's directory before copy 	new file
+11. Eclipse plugins:
+	- Spring IDE (or Spring Tool) for Eclipse:
+		Install: from Eclipse/help/marketplace/search for spring ide/install
+
+12. Maven project:
+	- From Eclipse/File/New/Other/Maven/maven project
+		search for "quickstart", choose one
+		name the group id (myproject.spring.test, for example)
+		name the artifact id,
+
+	- Wait for Maven download full content from internet.
+	- Note: from Window/preferences/Maven choose update/download allowed
+12.1 Create Maven project:
+	File/new/Maven project
+
+13. Mayven with command line
+
+14. POM.XML - Dependency plugins:
+	- After create Maven project, goto pom.xml/dependency
+	- Chose "add" and search for "springframework"
+		add three plugins: org.springframework: spring-core/spring-beans/spring-context
+
+15. Adding beans.xml file
+	from the root directory/new/other/Spring/bean configure file	//named the file
+
+16. FileSystemXmlApplicationContext
+
+17. Create a package to contain all the xml file
 	from the domain, create new package with the name ="...".beans
 	move all the xml file into this package.
 
-12. Construct args in xml beans
+18. Construct args in xml beans
 	<bean id="person" class="bui.spring.test.springProject1.Person">
 		<constructor-arg value="1000"></constructor-arg>	//set class's field
 		<constructor-arg value="person one"></constructor-arg>	////set class's field
 	</bean>
 
-13. Field Reference from one class to another:
+19. Field Reference from one class to another:
 	<bean id="person" class="bui.spring.test.springProject1.Person">
 		<constructor-arg value="1000" index="0" name="id"></constructor-arg>
 		<constructor-arg value="Person One" index="1" name="name"></constructor-arg>
@@ -75,24 +156,73 @@
 		<constructor-arg value="3053" index="1" name="postcode"></constructor-arg>		
 	</bean>
 
-14. Scope = beans.xml file
+20. Scope = beans.xml file
 	- Scope="prototype" --> no destroy-method will be run
 	- Scope = "singleton" --> both init-method and destroy-method will run
-15. Init and Destroy method
+21. Init and Destroy method
 	- for <beans> with default-init-method and default-destroy-method
 		<beans ...	default-init-method="init" default-destroy-method="destroy">
 	- for individual bean:
 		<bean ... init-method="onCreate" destroy-method="onDestroy">
 
-16. Factory method: to create new instance of a class
+22. Factory method: to create new instance of a class
 	public static Person getInstance() {	//the class name here does not matter
 		System.out.println("This is the person created by using factory method");
 		return new Person();	//just return an instance
 	}
 
-16. constructor a List field (in beans.xml)
-	<constructor-arg>
-		<list>
-			//set attribute, name, value here
-		</list>
-	</constructor-arg>
+23. constructor a List field (in beans.xml)
+	<bean id="jungle" class="bui.spring.project2.Jungle">
+		<property name="longest" ref="animal1"></property>
+		<property name="animals">
+			<list>
+				<ref bean="animal1" />
+				<ref bean="animal2" />
+			</list>
+		</property>
+	</bean>
+
+24. Construct a Map(HashMap)
+	private Map<String, String> foods = new HashMap<String, String>();
+	
+	<property name="foods">
+		<props>
+			<prop key="animal1">Raw meat</prop>
+			<prop key="animal2">Raw meat</prop>
+			<prop key="animal3">Fish</prop>
+		</props>
+	</property>
+
+24.2 Construct a Map(HashMap) with object:
+	private Map<String, Animal> animals_map = new HashMap<String, Animal>();	//in class
+
+	<property name="animals_map">	//in beans.xml
+		<map>
+			<entry key="lion" value-ref="animal1"></entry>
+			<entry key="tiger" value-ref="animal1"></entry>
+			<entry key="crockdise" value-ref="animal1"></entry>
+		</map>
+	</property>
+
+25. Auto-wired with Annotation:	//the wiring based on the id of the beans that match the class's name in lowercase.
+	- import org.springframework.beans.factory.annotation.Autowired;	//import inside class
+	- Adding Context, namespace: from beans.xml, navigate to namespace, check the one you want to add
+	- Editing annotation:context: from beans.xml, navigate to "context" tab, right click and choose "context:annotation"
+		<context:annotation-config></context:annotation-config>
+
+	- syntax:
+		@Autowired	//can be set to @Autowired(required = false)
+		public Jungle(Animal animal, Food food) {
+			super();
+			this.animal = animal;
+			this.food = food;
+		}	//note that, @Autowired can apply directly on the "set method" of a field
+	- Qulifier: to specifically wire a given field of a class to other bean, by insert a qualifier from beans.xml
+		+ syntax: <bean id="animal" class="bui.spring.project3.Animal">				
+				<qualifier value="animal_qualifier"></qualifier>
+			</bean>
+		+ @Autowired	//set method of the class
+		@Qualifeier("animal_qualifer")
+		public void setAnimal(Animal animal) {
+			this.animal = animal;
+		}
