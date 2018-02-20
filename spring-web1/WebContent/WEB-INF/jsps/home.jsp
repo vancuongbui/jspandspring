@@ -16,14 +16,18 @@
 %>
 <c:out value="${name}"></c:out>
 
+<!--
 <sql:query var="rs" dataSource="jdbc/spring">
 select id,name,email,text from offers
-</sql:query>
+</sql:query>  
+-->
 
-<c:forEach var="row" items="${rs.rows}">
-    Name: ${row.name}<br/>
-    Email ${row.email}<br/>
-    Text ${row.text}<br/>
+<c:forEach var="row" items="${offers}">
+<h3>This is the query using controller/service class</h3>
+	<p>ID: ${row.id }</p>
+    <p>Name: ${row.name}</p>
+    <p>Email ${row.email}</p>
+    <p>Text ${row.text}<
 </c:forEach>
 </body>
 </html>

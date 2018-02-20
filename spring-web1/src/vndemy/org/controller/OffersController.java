@@ -1,21 +1,38 @@
 package vndemy.org.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import vndemy.org.dao.Offer;
+import vndemy.org.service.OffersService;
+
 @Controller
 @RequestMapping("/app")
 public class OffersController {
+	private OffersService offersService;
+	
+	
+	public OffersService getOffersService() {
+		return offersService;
+	}
+	
+	@Autowired
+	public void setOffersService(OffersService offersService) {
+		this.offersService = offersService;
+	}
 
 	@RequestMapping("/home")
-	public String showHOme(HttpSession session) {
-		session.setAttribute("name", "Cuong Bui");
+	public String showHOme(Model model) {
+		List<Offer> offers = offersService.getCurrent();
+		model.addAttribute("offers", offers);
 		return "home";
 	}
 	
