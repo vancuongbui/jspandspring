@@ -1,8 +1,15 @@
 package vndemy.org.dao;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class Offer {
 	private int id;
+	
+	@Pattern(regexp="[A-Za-z-]{5,30}")
 	private String name;
+	
+	@Pattern(regexp="^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
 	private String email;
 	private String text;
 	
