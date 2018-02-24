@@ -19,8 +19,10 @@
 	      <a class="navbar-brand" href="#">Welcome to JSP page</a>
 	    </div>
 	    <ul class="nav navbar-toggleable-md">	      
-	      <li><a class="active" href="${pageContext.request.contextPath}/offers">Offers</a></li>
-	      <li><a href="${pageContext.request.contextPath}/form">New Offer</a></li>	      
+	      <li><a class="btn btn-primary" href="${pageContext.request.contextPath}/offers">Offers</a></li>
+	      <li><a class="btn btn-primary" href="${pageContext.request.contextPath}/form">New Offer</a></li>	
+	      <li><a class="btn btn-primary" href="${pageContext.request.contextPath}/deleteform">Delete Offer</a></li>
+	      <li><a class="btn btn-primary" href="${pageContext.request.contextPath}/updateform">Update Offer</a></li>      
 	    </ul>
 	  </div>
 	</nav>

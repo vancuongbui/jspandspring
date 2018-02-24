@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 public class Offer {
 	private int id;
 	
-	@Pattern(regexp="[A-Za-z-]{5,30}")
+	@Pattern(regexp="[A-Za-z-\\s]{5,30}", message="Name must be between 5 and 30 characters")
 	private String name;
 	
 	@Pattern(regexp="^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")

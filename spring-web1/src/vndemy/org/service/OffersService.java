@@ -3,6 +3,8 @@ package vndemy.org.service;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,21 @@ public class OffersService {
 	}
 	public OffersService() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public void create(@Valid Offer offer) {
+		offersDao.create(offer);
+		
+	}
+
+	public void delete(@Valid int id) {
+		offersDao.delete(id);
+		
+	}
+
+	public void update(@Valid Offer offer) {
+		offersDao.update(offer);
+		
 	}
 
 }

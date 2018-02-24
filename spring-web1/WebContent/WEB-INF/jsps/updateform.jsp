@@ -11,9 +11,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>This is the Offer form</h1>
-<form method="post" action="${pageContext.request.contextPath}/createoffer" class="form-group" commonName="offer" >
-	
+<h1>Update Offer by ID form</h1>
+<form method="post" action="${pageContext.request.contextPath}/updateoffer" class="form-group" commonName="offer" >
+	<p>	<label for="id">ID: </label>
+		<input type="text" class="form-control" path="id" name="id" required="required"/>
+		<sf:errors path="name" cssClass="error"></sf:errors>
+	</p>
 	<p>	<label for="name">Name: </label>
 		<input type="text" class="form-control" path="name" name="name" required="required"/>
 		<sf:errors path="name" cssClass="error"></sf:errors>
