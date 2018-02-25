@@ -5,14 +5,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Create offer</h1>
-
-	<p>ID: ${offer.id }</p>
-    <p>Name: ${offer.name}</p>
-    <p>Email: ${offer.email}</p>
-    <p>Text: ${offer.text}<
+<!-- This is the nav menu -->
+	<%@ include file="navbar.html" %>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<p>ID: ${offer.id }</p>
+			    <p>Name: ${offer.name}</p>
+			    <p>Email: ${offer.email}</p>
+			    <p>Text: ${offer.text}<
+			</div>
+			<div class="col-md-4">
+			</div>
+		</div>
+	</div>
+	<footer>
+	</footer>	
 </body>
 </html>

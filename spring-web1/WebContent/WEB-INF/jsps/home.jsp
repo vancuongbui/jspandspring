@@ -13,21 +13,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<nav class="navbar navbar-default ">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">Welcome to JSP page</a>
-	    </div>
-	    <ul class="nav navbar-toggleable-md">	      
-	      <li><a class="btn btn-primary" href="${pageContext.request.contextPath}/offers">Offers</a></li>
-	      <li><a class="btn btn-primary" href="${pageContext.request.contextPath}/form">New Offer</a></li>	
-	      <li><a class="btn btn-primary" href="${pageContext.request.contextPath}/deleteform">Delete Offer</a></li>
-	      <li><a class="btn btn-primary" href="${pageContext.request.contextPath}/updateform">Update Offer</a></li>      
-	    </ul>
-	  </div>
-	</nav>
-	
-
+	<!-- This is the nav menu -->
+	<%@ include file="navbar.html" %>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+			</div>
+			<div class="col-md-4">
+			</div>
+		</div>
+	</div>
+	<footer>
+	</footer>
 
 </body>
 </html>

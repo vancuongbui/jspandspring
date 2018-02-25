@@ -22,22 +22,29 @@
   </servlet-mapping>
   <description>MySQL Test App</description>
   <resource-ref>
-      <description>DB springtutorial Connection</description>
-      <res-ref-name>jdbc/spring</res-ref-name>
-      <res-type>javax.sql.DataSource</res-type>
-      <res-auth>Container</res-auth>
+    <description>DB springtutorial Connection</description>
+    <res-ref-name>jdbc/spring</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
   </resource-ref>
-  
   <listener>
-  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-  
-  <!-- Config the location to load the beans.xml file (dao-context.xml) -->
   <context-param>
-  	<param-name>contextConfigLocation</param-name>
-  	<param-value>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>
   		classpath:/vndemy/org/beans/dao-context.xml
   		classpath:/vndemy/org/beans/service-context.xml
+  		classpath:/vndemy/org/beans/security-context.xml
   	</param-value>
   </context-param>
+  <filter>
+    <display-name>springSecurityFilterChain</display-name>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>

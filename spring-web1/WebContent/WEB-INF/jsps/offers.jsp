@@ -11,27 +11,36 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!-- This is the nav menu -->
+	<%@ include file="navbar.html" %>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<h3>This is the query using controller/service class</h3>
+				<table class="table table-striped">
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Text</th>
+					</tr>
+					<c:forEach var="offer" items="${offers}">
+					<tr>			
+							<td>${offer.id }</td>
+						    <td>${offer.name}</td>
+						    <td>${offer.email}</td>
+						    <td>${offer.text}</td>
+						
+					</tr>		
+					</c:forEach>
+				</table>
+			</div>
+			<div class="col-md-4">
+			</div>
+		</div>
+	</div>
+	<footer>
+	</footer>
 
-<div class="container">
-<h3>This is the query using controller/service class</h3>
-	<table class="table table-striped">
-		<tr>
-			<th>ID</th>
-			<th>Name</th>
-			<th>Email</th>
-			<th>Text</th>
-		</tr>
-		<c:forEach var="offer" items="${offers}">
-		<tr>			
-				<td>${offer.id }</td>
-			    <td>${offer.name}</td>
-			    <td>${offer.email}</td>
-			    <td>${offer.text}</td>
-			
-		</tr>		
-		</c:forEach>
-	</table>
-		
-</div>	
 </body>
 </html>

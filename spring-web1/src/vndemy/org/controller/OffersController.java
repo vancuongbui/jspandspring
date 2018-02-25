@@ -33,7 +33,7 @@ public class OffersController {
 	@Autowired
 	public void setOffersService(OffersService offersService) {
 		this.offersService = offersService;
-	}
+	}	
 
 	@RequestMapping("/offers")
 	public String showOffers(Model model) {
