@@ -19,14 +19,21 @@
 					password="Gaucon0501" />
 			</security:user-service>
 		</security:authentication-provider>
+	<!-- Adding another jdbc dataSource which using database to verify user login -->
+		<!-- This dataSource id is refer to the dataSource created in dao-context.xml -->
 		<security:authentication-provider>
-			<security:jdbc-user-service data-source-ref="dataSource" />
+			<security:jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="Select username,password,enabled from users where username=?"
+				authorities-by-username-query="Select username,authorities from authorities where username=?" />
 		</security:authentication-provider>
+		
 	</security:authentication-manager>
 	<security:http use-expressions="true">
 		<security:intercept-url pattern="/" access="permitAll" />
 		<security:intercept-url pattern="/login" access="permitAll" />
-		<security:intercept-url pattern="/j_spring_security_check" access="permitAll" />
+		<security:intercept-url pattern="/signupform" access="permitAll" />
+		<security:intercept-url pattern="/createaccount" access="permitAll" />
+		<security:intercept-url pattern="/home" access="permitAll" />
 		<security:intercept-url pattern="/offers" access="permitAll" />
 		<security:intercept-url pattern="/static/**" access="permitAll" />
 		<security:intercept-url pattern="/*" access="isAuthenticated()" />

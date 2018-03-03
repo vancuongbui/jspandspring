@@ -1,6 +1,7 @@
 package vndemy.org.controller;
 
 import java.util.List;
+
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -126,14 +127,7 @@ public class OffersController {
 			return "createoffer";	//redirect to createoffer page
 		}
 		
-	}
-	@RequestMapping("/test")
-	public ModelAndView showTest() {
-		ModelAndView mv = new ModelAndView("test");
-		Map<String, Object> model = mv.getModel();
-		model.put("name", "The Test value from ModelAndView");
-		return mv;
-	}
+	}	
 	
 	@RequestMapping(value="/test_model", method=RequestMethod.GET)
 	public String showTest_model(Model model, @RequestParam("id") String id) {

@@ -6,3 +6,8 @@
 li {
 	padding: 2px;
 }
+
+.errors {
+	font-size: 110%;
+	color: red;
+}

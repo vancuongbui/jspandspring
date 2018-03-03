@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
@@ -14,12 +16,22 @@
 </head>
 <body>
 	<!-- This is the nav menu -->
-	<%@ include file="navbar.html" %>
+	<security:authorize access="isAuthenticated()">
+        <%@ include file="navbar.html" %>
+    </security:authorize>
+    <security:authorize access="isAnonymous()">
+        <%@ include file="nav_login.html" %>
+    </security:authorize>
+	
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">
+				<h1>This is the Home page</h1>
+				<h2>The content will be filled later</h2>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-4">			
+				
+				<%@ include file="aside.html" %>
 			</div>
 		</div>
 	</div>
