@@ -11,3 +11,14 @@ li {
 	font-size: 110%;
 	color: red;
 }
+.row .img-fluid {
+	padding: 5px;
+}
+
+.row .col-md-4 {
+	background-color: #EFEFEF;
+	margin-right: 0px;
+}
+.container {	
+	padding-right: 0px;
+}

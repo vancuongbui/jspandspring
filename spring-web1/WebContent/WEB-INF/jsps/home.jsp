@@ -29,10 +29,10 @@
 				<h1>This is the Home page</h1>
 				<h2>The content will be filled later</h2>
 			</div>
-			<div class="col-md-4">			
+			<aside class="col-md-4">			
 				
 				<%@ include file="aside.html" %>
-			</div>
+			</aside>
 		</div>
 	</div>
 	<footer>

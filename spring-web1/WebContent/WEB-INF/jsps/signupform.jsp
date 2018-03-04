@@ -10,19 +10,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="${pageContext.request.contextPath}/static/javascripts/jquery.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#confirmPassword").mouseleave(function(){
-			if ($("#password").val() != $("#confirmPassword").val()) {
-				$("#test").text("password mismatched");						
-			}
-			else {
-				$("#test").text("");
-			};
-		});	
-	});
-	
-</script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/static/javascripts/javascripts.js" ></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -34,31 +22,34 @@
 			<div class="col-md-8">
 				<h1>Create account</h1>
 				<form method="post" action="${pageContext.request.contextPath}/createaccount" 
-				class="form-group" commonName="user" modelAttribute="userForm">
+				class="form-group" commonName="user" modelAttribute="userForm" id="signupForm">
 					
 					<p>	<label for="username">Email Address: </label>
-						<input type="text" class="form-control" path="username" name="username" required="required" />
+						<input type="text" class="form-control" path="username" name="username" id="username" required="required" />
 						
 						<span class="errors">${userErrorMessage}</span>
+						<span id="wrongEmailFormat" data-dismiss="alert">${userErrorMessage}</span>
 					</p>
 					<p>	<label for="password">Password: </label>
 						<input type="text" class="form-control" id="password" path="password" name="password" required="required"/>
 						<span class="errors">${passErrorMessage}</span>
 						<span class="errors">${passMismatched}</span>
-						<span id="test">Test Jquery function</span>
+						<span id="test" ></span>
 					</p>	
 					<p>	<label for="confirmPassword">Confirm Password </label>
 						<input type="text" class="form-control" path="confirmPassword" name="confirmPassword" id="confirmPassword" required="required"/>
+						<span id="test1"></span>
 					</p>					
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 					</p>
-					<p>	<input type="submit" value="Create Account" class="btn btn-primary"/>
+					<p>	<input type="submit" value="Create Account" class="btn btn-primary"id="submit"/>
 						<input type="reset" value="reset" class="btn btn-danger"/>
 						<a class="btn btn-danger" href="${pageContext.request.contextPath}/"/>Cancel</a>
 					</p>
 				</form>
 			</div>
 			<div class="col-md-4">
+				<%@ include file="aside.html" %>
 			</div>
 		</div>
 	</div>
