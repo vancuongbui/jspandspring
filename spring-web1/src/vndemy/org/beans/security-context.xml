@@ -31,17 +31,21 @@
 	<security:http use-expressions="true">
 		<security:intercept-url pattern="/" access="permitAll" />
 		<security:intercept-url pattern="/login" access="permitAll" />
+		<security:intercept-url pattern="/logout" access="permitAll" />
 		<security:intercept-url pattern="/signupform" access="permitAll" />
 		<security:intercept-url pattern="/createaccount" access="permitAll" />
 		<security:intercept-url pattern="/home" access="permitAll" />
 		<security:intercept-url pattern="/offers" access="permitAll" />
 		<security:intercept-url pattern="/static/**" access="permitAll" />
+		<security:intercept-url pattern="/admin" access="isAuthenticated() and hasAuthority('admin')" />
+		
 		<security:intercept-url pattern="/*" access="isAuthenticated()" />
-	
+		
 		<security:intercept-url pattern="/**" access="denyAll" />
 		<security:form-login login-page="/login"
 			authentication-failure-url="/login?error=true" />
+		<security:logout logout-success-url="/logout" />
 	</security:http>
-	
-	
+
+
 </beans>

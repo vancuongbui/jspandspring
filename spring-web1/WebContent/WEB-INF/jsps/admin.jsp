@@ -15,13 +15,24 @@
 <body>
 <!-- This is the nav menu -->
 	 <%@ include file="security_nav.html" %>  
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-8">
-				<h3>You have created your account successfully</h3>
-				<h3>Your account detail</h3>
-				<p>Your email/username: ${user.username }</p>
-			    <p>Your Password: ${user.password}</p>			    
+				<h1 class="text-center">THIS IS THE ADMIN PAGE</h1>
+				<h3 class="text-center">The list of users</h3>
+				<table class="table table-striped">
+					<tr>
+						<th>Username</th>
+						<th>Role</th>						
+					</tr>
+					<c:forEach var="user" items="${adminUsers}">
+					<tr>			
+							<td>${user.username }</td>
+						    <td>${user.authorities}</td>		   
+						
+					</tr>		
+					</c:forEach>
+				</table>
 			</div>
 			<aside class="col-md-4 center-block">			
 				
@@ -30,6 +41,7 @@
 		</div>
 	</div>
 	<footer>
-	</footer>	
+	</footer>
+
 </body>
 </html>

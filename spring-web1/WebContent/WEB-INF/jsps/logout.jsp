@@ -4,24 +4,25 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
 <title>Insert title here</title>
 </head>
 <body>
-<!-- This is the nav menu -->
+	<!-- This is the nav menu -->
 	 <%@ include file="security_nav.html" %>  
+	
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">
-				<h3>You have created your account successfully</h3>
-				<h3>Your account detail</h3>
-				<p>Your email/username: ${user.username }</p>
-			    <p>Your Password: ${user.password}</p>			    
+				<h1>You have logged out successfully</h1>
+				
 			</div>
 			<aside class="col-md-4 center-block">			
 				
@@ -30,6 +31,7 @@
 		</div>
 	</div>
 	<footer>
-	</footer>	
+	</footer>
+
 </body>
 </html>

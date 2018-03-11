@@ -16,9 +16,6 @@ public class homeController {
 		
 		return "home";
 	}
-
-	public homeController() {
-		// TODO Auto-generated constructor stub
-	}
-
+	
+	
 }

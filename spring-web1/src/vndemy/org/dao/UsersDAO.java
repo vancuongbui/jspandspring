@@ -26,7 +26,7 @@ public class UsersDAO {
 	}
 	//get the list of all users from database
 	public List<User> getUsers() {
-		return jdbc.query("select username,password,enabled from users", new RowMapper<User>() {
+		return jdbc.query("select * from users, authorities where users.username = authorities.username", new RowMapper<User>() {
 
 			@Override
 			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -34,7 +34,8 @@ public class UsersDAO {
 				User user = new User();
 				user.setUsername(rs.getString("username"));
 				user.setPassword(rs.getString("password"));
-				user.setEnabled(rs.getBoolean("enabled"));				
+				user.setEnabled(rs.getBoolean("enabled"));
+				user.setAuthorities(rs.getString("authorities"));
 				return user;
 			}
 			

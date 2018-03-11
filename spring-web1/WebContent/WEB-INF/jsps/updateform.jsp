@@ -41,9 +41,10 @@
 					</p>
 				</form>
 			</div>
-			<div class="col-md-4">
+			<aside class="col-md-4 center-block">			
+				
 				<%@ include file="aside.html" %>
-			</div>
+			</aside>
 		</div>
 	</div>
 	<footer>

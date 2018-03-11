@@ -17,9 +17,10 @@
 			<div class="col-md-8">
 				<h2>Delete confirm</h2>
 				<p>Offer was deleted</p>
-			</div>
-			<div class="col-md-4">
-			</div>
+			<aside class="col-md-4 center-block">			
+				
+				<%@ include file="aside.html" %>
+			</aside>
 		</div>
 	</div>
 	<footer>

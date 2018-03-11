@@ -1,0 +1,9 @@
+	<security:authorize access="isAuthenticated() and hasAuthority('admin')">
+        <%@ include file="navbarAdmin.html" %>
+    </security:authorize>
+	<security:authorize access="isAuthenticated()and not hasAuthority('admin')">
+        <%@ include file="navbar.html" %>
+    </security:authorize>
+    <security:authorize access="isAnonymous()">
+        <%@ include file="nav_login.html" %>
+    </security:authorize>

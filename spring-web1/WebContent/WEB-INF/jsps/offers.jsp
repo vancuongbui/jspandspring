@@ -14,12 +14,7 @@
 </head>
 <body>
 <!-- This is the nav menu -->
-	<security:authorize access="isAuthenticated()">
-        <%@ include file="navbar.html" %>
-    </security:authorize>
-    <security:authorize access="isAnonymous()">
-        <%@ include file="nav_login.html" %>
-    </security:authorize>
+	 <%@ include file="security_nav.html" %>  
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">
@@ -42,9 +37,10 @@
 					</c:forEach>
 				</table>
 			</div>
-			<div class="col-md-4">
+			<aside class="col-md-4 center-block">			
+				
 				<%@ include file="aside.html" %>
-			</div>
+			</aside>
 		</div>
 	</div>
 	<footer>

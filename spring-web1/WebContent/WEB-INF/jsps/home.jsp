@@ -15,27 +15,23 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- This is the nav menu -->
-	<security:authorize access="isAuthenticated()">
-        <%@ include file="navbar.html" %>
-    </security:authorize>
-    <security:authorize access="isAnonymous()">
-        <%@ include file="nav_login.html" %>
-    </security:authorize>
+	<!-- This is the nav menu -->	
+        <%@ include file="security_nav.html" %>   
 	
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-8">
 				<h1>This is the Home page</h1>
 				<h2>The content will be filled later</h2>
 			</div>
-			<aside class="col-md-4">			
+			<aside class="col-md-4 center-block">			
 				
 				<%@ include file="aside.html" %>
 			</aside>
 		</div>
 	</div>
-	<footer>
+	<footer class="container-fluid">
+		<%@ include file="footer.html" %>
 	</footer>
 
 </body>
